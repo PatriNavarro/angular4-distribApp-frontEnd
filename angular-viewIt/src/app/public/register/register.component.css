@@ -1,0 +1,11 @@
+.jumbotron{
+  height: fit-content;
+  background-color: rgba(0, 0, 0, 0.51);
+  flex-grow: 1;
+
+  margin:20%;
+}
+
+.form-group{
+  font-size: large;
+}
