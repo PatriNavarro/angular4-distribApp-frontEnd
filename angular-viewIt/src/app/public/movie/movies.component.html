@@ -1,0 +1,34 @@
+<div *ngIf="isLoading; else elseBlock">
+  <div class="auth-loader-container">
+    <app-loader></app-loader>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <div class="jumbotron container-fluid">
+  <div class="page-header"><h1>{{movie.title}}</h1></div>
+
+  <!-- Portfolio Item Row -->
+  <div id="row-details" class="col-lg-6">
+    <div id="movieDetailsText" class="row">
+      <ul>
+        <li><b>Genre:</b> {{movie.movieDetails.genre}}</li>
+        <li><b>Duration:</b> {{movie.movieDetails.duration}} min</li>
+        <li><b>Synopsis:</b><br> {{movie.movieDetails.sinopsis}}</li>
+      </ul>
+    </div>
+
+    <div id="row-sessions" class="row">
+      <h3><b>Screenings</b></h3>
+
+    </div>
+  </div>
+    <div class="col-lg-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" [src]='sanitizer.bypassSecurityTrustResourceUrl(trailer)' frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+
+</ng-template>

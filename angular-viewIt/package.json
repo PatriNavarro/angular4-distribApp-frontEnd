@@ -27,6 +27,8 @@
     "angular-slick": "0.0.0",
     "angular-ui-carousel": "^0.1.10",
     "core-js": "^2.5.4",
+    "jquery": "^3.3.1",
+    "ng2-opd-popup": "^1.1.21",
     "rxjs": "^6.0.0",
     "slick-carousel": "^1.8.1",
     "zone.js": "~0.8.26"
