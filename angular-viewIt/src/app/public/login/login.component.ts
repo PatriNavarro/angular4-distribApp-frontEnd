@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
 import {User} from 'src/app/models/user';
+import {AuthenticationService} from '../../common/services/authentication.service';
+import {SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +11,29 @@ import {User} from 'src/app/models/user';
 })
 export class LoginComponent implements OnInit {
 
-  user = new User(1, 'Doctor Who', 'doctorwho@gmail.com', '22/08/1995', '1234567890');
-
-  constructor(public router: Router) {}
+  user: any = <any>{};
+  constructor(public _authService: AuthenticationService,
+              public _locker: SessionStorageService,
+              public _router: Router) { }
 
   ngOnInit() {
   }
 
-
   onSubmit(event: Event) {
     event.preventDefault();
-    const authorized = true;
-    this.router.navigate(['/home']);
+    this._authService.logIn(this.user.username, this.user.password).subscribe(
+      (data) => {
+        this._authService.user = data;
+        this._authService.hasSession = true;
+        this._locker.store('user', data);
+        // si el usuario se pudo autenticar pues lo redirigimos a home
+        this._router.navigate(['/home']);
+      },
+      err => {
+        console.error(err);
+        this._authService.hasSession = false;
+      }
+    );
   }
 
 }

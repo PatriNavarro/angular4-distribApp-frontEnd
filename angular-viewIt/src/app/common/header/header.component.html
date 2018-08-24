@@ -2,22 +2,25 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="navbar-header">
-            <a class="navbar-brand" routerLink="/home">
+            <a class="navbar-brand" routerLink="/billboard">
               <img src="/src/assets/vi-logo-white.png" width="30" height="30" class="d-inline-block align-top" alt="">
             </a>
+
           </div>
 
           <div class="collapse navbar-collapse" id="navbar-collapse">
+            <button (click)="edit()"  type="button" class="btn btn-secondary navbar-nav pull-right" id="edit-btn">Edit</button>
             <ul class="nav navbar-nav pull-right">
+
               <li class="leaf">
                 <a
-                  routerLink="/movies"
-                  title="Movies">Movies</a>
+                  routerLink="/billboard"
+                  title="Billboard">Billboard</a>
               </li>
               <li class="leaf">
                 <a
-                  routerLink="/series"
-                  title="series">TV series</a>
+                  routerLink="/bar"
+                  title="bar">Food & Drinks</a>
               </li>
               <li class="leaf">
                 <a

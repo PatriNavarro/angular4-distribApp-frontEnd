@@ -1,4 +1,5 @@
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 *{
   font-family: 'Nunito Sans', sans-serif;
 }

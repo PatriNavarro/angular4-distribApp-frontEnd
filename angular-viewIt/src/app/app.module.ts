@@ -2,11 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatFormFieldModule, MatNativeDateModule} from '@angular/material';
+import {MatFormFieldModule, MatNativeDateModule, MatSelectModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {RouterModule} from '@angular/router';
 import {MatStepperModule} from '@angular/material/stepper';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -16,11 +17,22 @@ import { RegisterComponent } from './public/register/register.component';
 import { HomeComponent } from './auth/home/home.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import {routes} from './routes';
-import { MoviesComponent } from './auth/movies/movies.component';
+import { MoviesComponent } from './public/movie/movies.component';
+import { MovieEditorComponent } from './public/movie-editor/movie-editor.component';
 import { SeriesComponent } from './auth/series/series.component';
 import { UserAccountComponent } from './auth/user-account/user-account.component';
+import { BarComponent } from './public/bar/bar.component';
+import {SlickModule} from 'ngx-slick';
+import {HttpService} from './common/services/http.service';
+import {BarService} from './public/services/bar.service';
+import {MoviesService} from './public/services/movies.service';
+import { BillboardComponent } from './public/billboard/billboard.component';
+import {AuthenticationService} from './common/services/authentication.service';
 
-
+import {Ng2Webstorage} from 'ngx-webstorage';
+import { LoaderComponent } from './common/loader/loader.component';
+import { BillboardEditorComponent } from './public/billboard-editor/billboard-editor.component';
+import { MovieCreatorComponent } from './public/movie-creator/movie-creator.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +44,13 @@ import { UserAccountComponent } from './auth/user-account/user-account.component
     NotFoundComponent,
     MoviesComponent,
     SeriesComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    BarComponent,
+    BillboardComponent,
+    LoaderComponent,
+    MovieEditorComponent,
+    BillboardEditorComponent,
+    MovieCreatorComponent
   ],
   imports: [
     BrowserModule,
@@ -44,11 +62,19 @@ import { UserAccountComponent } from './auth/user-account/user-account.component
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatStepperModule
+    MatStepperModule,
+    SlickModule.forRoot(),
+    HttpClientModule,
+    Ng2Webstorage
   ],
   providers: [
     {provide: LocationStrategy, useClass: PathLocationStrategy},
-    MatDatepickerModule],
+    MatDatepickerModule,
+    AppComponent,
+    HttpService,
+    BarService,
+    MoviesService,
+  AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,13 @@
+.jumbotron{
+  height: fit-content;
+  background-color: rgba(0, 0, 0, 0.51);
+  flex-grow: 1;
+}
+
+#movieDetailsText{
+  font-size: x-large;
+}
+
+#row-info{
+  height: 330px;
+}

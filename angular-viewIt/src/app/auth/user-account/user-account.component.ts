@@ -9,7 +9,6 @@ import {User} from '../../models/user';
 })
 export class UserAccountComponent implements OnInit {
 
-  user = new User(1, 'Doctor Who', 'doctorwho@gmail.com', '22/08/1995', '1234567890');
   constructor(public router: Router) { }
 
   ngOnInit() {
