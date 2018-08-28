@@ -1,10 +1,8 @@
-export class User {
+import {Order} from './order';
 
-  constructor(
-    public id: number,
-    public username: string,
-    public email: string,
-    public birthDate: string,
-    public password: string
-  ) {}
+export class User {
+    public userId: number;
+    public username: string;
+    public email: string;
+    public password: string;
 }

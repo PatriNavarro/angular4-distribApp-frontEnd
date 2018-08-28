@@ -20,8 +20,9 @@ export class BillboardComponent implements OnInit {
     this.getBillboard();
   }
 
+  // TODO: get billboard after selecting a date. So add datepicker in screen, parse and edit movie.service server route
   getBillboard() {
-    this.moviesService.getMovies().subscribe(
+    this.moviesService.getBillboard().subscribe(
       (data: Movie[]) => {
         // for every product received in the array
         this.movies = data;
@@ -39,7 +40,6 @@ export class BillboardComponent implements OnInit {
   addSlide(movie: Movie) {
     // this.slides.push({img: 'http://placehold.it/350x150/777777', title: movie.title});
     this.slides.push({img: movie.image, title: movie.title, id: movie.movieId});
-    console.log('title: ' + movie.title + ' id: ' + movie.movieId);
   }
   afterChange(e) {
     console.log('afterChange');

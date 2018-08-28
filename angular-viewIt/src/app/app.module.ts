@@ -19,7 +19,6 @@ import { NotFoundComponent } from './common/not-found/not-found.component';
 import {routes} from './routes';
 import { MoviesComponent } from './public/movie/movies.component';
 import { MovieEditorComponent } from './public/movie-editor/movie-editor.component';
-import { SeriesComponent } from './auth/series/series.component';
 import { UserAccountComponent } from './auth/user-account/user-account.component';
 import { BarComponent } from './public/bar/bar.component';
 import {SlickModule} from 'ngx-slick';
@@ -33,6 +32,9 @@ import {Ng2Webstorage} from 'ngx-webstorage';
 import { LoaderComponent } from './common/loader/loader.component';
 import { BillboardEditorComponent } from './public/billboard-editor/billboard-editor.component';
 import { MovieCreatorComponent } from './public/movie-creator/movie-creator.component';
+import {UserService} from './public/services/user.service';
+import {AuthGuard} from './common/guards/auth.guard';
+import {PublicGuard} from './common/guards/public.guard';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,6 @@ import { MovieCreatorComponent } from './public/movie-creator/movie-creator.comp
     HomeComponent,
     NotFoundComponent,
     MoviesComponent,
-    SeriesComponent,
     UserAccountComponent,
     BarComponent,
     BillboardComponent,
@@ -74,7 +75,11 @@ import { MovieCreatorComponent } from './public/movie-creator/movie-creator.comp
     HttpService,
     BarService,
     MoviesService,
-  AuthenticationService],
-  bootstrap: [AppComponent]
+    UserService,
+    AuthenticationService,
+    AuthGuard,
+    PublicGuard
+  ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

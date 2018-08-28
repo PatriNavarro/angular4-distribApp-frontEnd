@@ -4,4 +4,5 @@ export class Product {
   unitPrice: number;
   size ?: string;
   image ?: string;
+  ticketType ?: string;
 }

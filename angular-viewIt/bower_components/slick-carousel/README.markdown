@@ -90,7 +90,7 @@ pauseOnDotsHover | boolean | false | Pauses autoplay when a dot is hovered
 respondTo | string | 'window' | Width that responsive object responds to. Can be 'window', 'slider' or 'min' (the smaller of the two).
 responsive | object | null | Object containing breakpoints and settings objects (see demo). Enables settings sets at given screen width. Set settings to "unslick" instead of an object to disable slick at a given breakpoint.
 slide | string | '' | Slide element query
-slidesToShow | int | 1 | # of slides to show at a time
+slidesToShow | int | 1 | # of slides to validAmount at a time
 slidesToScroll | int | 1 | # of slides to scroll at a time
 speed | int | 300 | Transition speed
 swipe | boolean | true | Enables touch swipe

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark text-white" role="navigation">
+<nav class="navbar navbar-dark bg-dark text-white" role="navigation" *ngIf="userService.userLoggedIn()">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="navbar-header">
@@ -29,7 +29,7 @@
               </li>
               <li class="leaf">
                 <a
-                  routerLink="/login"
+                  (click)="logout()"
                   title="logout">Logout</a>
               </li>
             </ul>
