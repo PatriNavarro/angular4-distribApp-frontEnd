@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Movie} from '../../models/movie';
-import {DomSanitizer} from '@angular/platform-browser';
 import {MoviesService} from '../services/movies.service';
-import {ActivatedRoute} from '@angular/router';
-import {Config} from '../../config';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-movie-editor',
@@ -16,7 +15,9 @@ export class MovieEditorComponent implements OnInit {
   id: number;
   public genreList: Array<string> = ['Action', 'Animated', 'Comedy', 'Musical'];
 
-  constructor(private moviesService: MoviesService, private route: ActivatedRoute) { }
+  constructor(private moviesService: MoviesService,
+              private route: ActivatedRoute,
+              public router: Router) { }
 
   ngOnInit() {
     // this.route.params.subscribe(params => {
@@ -47,7 +48,13 @@ export class MovieEditorComponent implements OnInit {
   }
 
   submitChanges() {
-    this.moviesService.updateMovie(this.movie);
+    // Change the stored value of the movie
+    this.moviesService.updateMovie(this.movie).subscribe(
+      (data: Movie) => {
+        if (data === null) { console.log('Movie saved correctly'); }
+      }
+    );
+    this.router.navigate(['/billboard']);
   }
 
 }

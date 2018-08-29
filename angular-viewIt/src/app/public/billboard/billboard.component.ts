@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class BillboardComponent implements OnInit {
   slides: Array<{img: string, title: string, id: number}> = [];
 
-  slideConfig = {'slidesToShow': 3, 'slidesToScroll': 4};
+  slideConfig = {'slidesToShow': 4, 'slidesToScroll': 4};
   movies: Array<Movie>;
 
   constructor(private moviesService: MoviesService, public router: Router) { }

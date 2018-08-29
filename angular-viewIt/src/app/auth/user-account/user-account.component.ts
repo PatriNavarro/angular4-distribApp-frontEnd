@@ -4,6 +4,8 @@ import {User} from '../../models/user';
 import {UserService} from '../../public/services/user.service';
 import {NgForm} from '@angular/forms';
 import {OrderDetail} from '../../models/orderDetail';
+import {Movie} from '../../models/movie';
+import {Order} from '../../models/order';
 
 @Component({
   selector: 'app-user-account',
@@ -41,6 +43,19 @@ total: number;
   }
 
   saveChanges(form: NgForm) {
+    this.userService.editUser(this.user).subscribe(
+      (data: User) => {
+        if (data === null) {
+          console.log('User saved correctly');
+          this.userService.refreshUser().subscribe(
+            (data2: User) => {
+              if (data2 === null) {
+                console.log('User refreshed correctly');
+              }}
+          );
+        }
+      }
+    );
     this.router.navigate(['/home']);
   }
 
@@ -49,7 +64,11 @@ total: number;
   }
 
   purchase() {
-    this.userService.purchaseCurrentOrder();
+    this.userService.purchaseCurrentOrder().subscribe(
+      (data: Order) => {
+        if (data === null) { console.log('Order saved correctly'); }
+      }
+    );
     this.router.navigate(['/billboard']);
   }
 }

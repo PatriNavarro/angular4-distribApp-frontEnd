@@ -7,6 +7,7 @@ import {Order} from '../../models/order';
 import {OrderDetail} from '../../models/orderDetail';
 import {assertNotNull} from '@angular/compiler/src/output/output_ast';
 import {isNull} from 'util';
+import {Movie} from '../../models/movie';
 
 @Injectable()
 export class UserService extends HttpService {
@@ -43,6 +44,14 @@ export class UserService extends HttpService {
     return this.post(`${this.url}/user/login`, user);
   }
 
+  editUser(user: User): Observable<User> {
+    return this.put(`${this.url}/user/edit`, user);
+  }
+
+  refreshUser(): Observable<User> {
+    return this.get(`${this.url}/user/find/${this.currentUser.userId}`);
+  }
+
   setCurrentUser(user: User) {
     this.currentUser = user;
   }
@@ -63,8 +72,8 @@ export class UserService extends HttpService {
     return this.get(`${this.url}/user/order/list`);
   }
 
-  purchaseCurrentOrder(): void {
-    this.get(`${this.url}/user/order/purchase`);
+  purchaseCurrentOrder(): Observable<Order> {
+    return this.get(`${this.url}/user/order/purchase`);
   }
 
   logout(): void {

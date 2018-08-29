@@ -44,8 +44,6 @@ export class HttpService {
       }) : new HttpHeaders({'Content-Type': 'application/json'})
     };
     const body = JSON.stringify(params);
-    console.log(url);
-    console.log(body);
     return this.http.put(url, body, options);
   }
 

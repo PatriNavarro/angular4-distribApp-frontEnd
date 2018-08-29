@@ -114,7 +114,7 @@ export class MoviesComponent implements OnInit {
         if (data === null) {
           console.log('Adding ticket failed');
         } else {
-          console.log('Added successfully');
+          console.log('Added successfully. ProductId = ' + data.product.productId);
           this.closeAddModal.nativeElement.click();
           this.router.navigate(['/billboard']);
         }},
@@ -129,11 +129,12 @@ export class MoviesComponent implements OnInit {
   generateOrderDetail() {
     // 1st construct the product:
     this.product.name = this.selectedTicket.name;
-    this.product.id = this.selectedTicket.productId;
+    this.product.productId = this.selectedTicket.productId;
     this.product.ticketType = this.selectedTicket.ticketType;
     this.product.unitPrice = this.selectedTicket.unitPrice;
 
     this.orderDetail.product = this.product;
+
   }
 
 }

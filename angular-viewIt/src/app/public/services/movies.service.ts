@@ -21,15 +21,12 @@ export class MoviesService extends HttpService {
     return this.get(`${this.url}/movies/${id}`);
   }
 
-  updateMovie(movie: Movie) {
-    const id: number = movie.movieId;
-    const editMovieUrl: String = this.url + '/movies/' + id + '/edit';
-    // this.put(`${this.url}/movies/${id}/edit`, movie);
-    this.put(editMovieUrl, movie);
+  updateMovie(movie: Movie): Observable<Movie> {
+    return this.put(`${this.url}/movies/${movie.movieId}/edit`, movie);
   }
 
-  addMovie(movie: Movie) {
-    this.post(`${this.url}/movies/new`, movie);
+  addMovie(movie: Movie): Observable<Movie> {
+    return this.post(`${this.url}/movies/new`, movie);
   }
 
   removeMovie(movie: Movie) {
@@ -55,7 +52,6 @@ export class MoviesService extends HttpService {
   }
 
   addOrderDetail(od: OrderDetail): Observable<OrderDetail> {
-    console.log('posting order detail');
     return this.post(`${this.url}/user/order/add`, od);
   }
 

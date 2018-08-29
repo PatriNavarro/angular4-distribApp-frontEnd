@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class BillboardEditorComponent implements OnInit {
   slides: Array<{img: string, title: string, id: number}> = [];
 
-  slideConfig = {'slidesToShow': 3, 'slidesToScroll': 4};
+  slideConfig = {'slidesToShow': 4, 'slidesToScroll': 4};
   movies: Array<Movie>;
 
   constructor(private moviesService: MoviesService, public router: Router) { }
@@ -39,7 +39,6 @@ export class BillboardEditorComponent implements OnInit {
   addSlide(movie: Movie) {
     // this.slides.push({img: 'http://placehold.it/350x150/777777', title: movie.title});
     this.slides.push({img: movie.image, title: movie.title, id: movie.movieId});
-    console.log('title: ' + movie.title + ' id: ' + movie.movieId);
   }
   afterChange(e) {
     console.log('afterChange');
